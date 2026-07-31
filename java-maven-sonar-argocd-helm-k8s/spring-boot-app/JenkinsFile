@@ -55,7 +55,7 @@ pipeline {
                 bat '''
                     git config user.email "nakkanavenkatkalyan22@gmail.com"
                     git config user.name "kalyan"
-                    BUILD_NUMBER=%BUILD_NUMBER%
+                    set BUILD_NUMBER= 33
                     (Get-Content java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml) `
                     -replace 'replaceImageTag', "$env:BUILD_NUMBER" |
                      Set-Content java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
