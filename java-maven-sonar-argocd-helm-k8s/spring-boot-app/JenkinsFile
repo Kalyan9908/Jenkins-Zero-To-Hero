@@ -59,7 +59,7 @@ pipeline {
                powershell '''
                     $file = "java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml"
                     $content = Get-Content $file -Raw
-                    $content = $content -replace 'image:\s*kalyan225/ultimate-cicd:\d+', "image: kalyan225/ultimate-cicd:$env:BUILD_NUMBER"
+                    $content = $content -replace 'image:/s*kalyan225/ultimate-cicd:/d+', "image: kalyan225/ultimate-cicd:$env:BUILD_NUMBER"
                     Set-Content $file $content
 
                     Write-Host "Updated deployment.yml:"
