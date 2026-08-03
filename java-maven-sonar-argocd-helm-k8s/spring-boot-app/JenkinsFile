@@ -57,15 +57,19 @@ pipeline {
                     git config user.name "kalyan"
                     '''
                powershell '''
-                    $file = "java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml"
+                   $file = "java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml"
+
+                    Write-Host "===== BEFORE ====="
+                    Get-Content $file
                     $content = Get-Content $file -Raw
-                    $content = $content -replace 'image:/s*kalyan225/ultimate-cicd:/d+', "image: kalyan225/ultimate-cicd:$env:BUILD_NUMBER"
+                    $content = $content -replace 'image:.*ultimate-cicd:\\d+', "image: kalyan225/ultimate-cicd:$env:BUILD_NUMBER"
                     Set-Content $file $content
 
-                    Write-Host "Updated deployment.yml:"
-                    Get-Content $file
+                   Write-Host "===== AFTER ====="
+                   Get-Content $file
                      '''
                  bat '''
+                    type java-maven-sonar-argocd-helm-k8s\spring-boot-app-manifests\deployment.yml
                     echo ===== Git Status =====
                     git status
 
