@@ -19,3 +19,4 @@ spec:
         image: kalyan225/ultimate-cicd:41
         ports:
         - containerPort: 8080
+
