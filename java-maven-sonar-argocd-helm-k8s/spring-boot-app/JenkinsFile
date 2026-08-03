@@ -69,7 +69,7 @@ pipeline {
                    Get-Content $file
                      '''
                  bat '''
-                    type java-maven-sonar-argocd-helm-k8s\spring-boot-app-manifests\deployment.yml
+                    type java-maven-sonar-argocd-helm-k8s/spring-boot-app-manifests/deployment.yml
                     echo ===== Git Status =====
                     git status
 
